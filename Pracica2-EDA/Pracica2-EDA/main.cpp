@@ -21,7 +21,7 @@ using namespace std;
  */
 int viaDeEntrada(Pila<int> &entrada, Lista<int> &secuenciaSalida);
 /**
- * Función que determiana si una combinación de bagones en el hangar
+ * Función que determiana si una combinación de vagones en el hangar
  * es posible de realizar.
  */
 void hangarDeVagones(const int &numeroVagones, Pila<int> &entrada, Lista<int> &secuenciaSalida);
