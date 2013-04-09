@@ -1,3 +1,11 @@
+/**
+ * Práctica que resuelve el problema de la estación de tren
+ * que solo tiene una vía de entrada y salida del hangar.
+ *
+ * @author Daniel Serrano Torres
+ * @author Juan Pérez Valbuena
+ */
+
 #include <iostream>
 #include <string.h>
 #include "Pila.h"
@@ -5,7 +13,17 @@
 
 using namespace std;
 
+/**
+ * Función que se encarga de leer los datos por la salida estandar
+ * y de inicializar los datos del sistema.
+ *
+ * @return int El numero de vagones de entrada al hangar.
+ */
 int viaDeEntrada(Pila<int> &entrada, Lista<int> &secuenciaSalida);
+/**
+ * Función que determiana si una combinación de bagones en el hangar
+ * es posible de realizar.
+ */
 void hangarDeVagones(const int &numeroVagones, Pila<int> &entrada, Lista<int> &secuenciaSalida);
 
 int main (int argv, char** argc) {
@@ -26,30 +44,6 @@ int main (int argv, char** argc) {
     }
     
     return 0;
-}
-
-void printPila(Pila<int> a) {
-    
-    while ( ! a.esVacia()) {
-        
-        try {
-            cout << a.cima() << endl;
-        
-            a.desapila();
-        } catch(EPilaVacia e) {
-            cout << "La pila está vacia" << endl;
-        }
-    }
-}
-
-void printLista(Lista<int> a) {
-    
-    Lista<int>::Iterador it = a.principio();
-    while (it != a.final()) {
-        cout << it.elem() << endl;
-        
-        it.avanza();
-    }
 }
 
 int viaDeEntrada(Pila<int> &entrada, Lista<int> &secuenciaSalida) {
@@ -88,21 +82,7 @@ void hangarDeVagones(const int &numeroVagones, Pila<int> &entrada, Lista<int> &s
     
     bool resultado = true;
     
-    
-    /*cout << "Entrada" << endl;
-    printPila(entrada);
-    cout << "Secuencia" << endl;
-    printLista(secuenciaSalida);
-    */
-    
     while( resultado && (! secuenciaSalida.esVacia() || ! hangar.esVacia()) ) {
-        
-        /*
-        cout << "Hangar" << endl;
-        printPila(hangar);
-        cout << "Entrada" << endl;
-        printPila(entrada);
-        */
         
         // Si el elemento de la cima es igual que el primer elemento
         // de la secuencia resultante lo sacamos de la pila.
