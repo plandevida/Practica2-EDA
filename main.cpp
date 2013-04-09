@@ -97,11 +97,6 @@ void hangarDeVagones(const int &numeroVagones, Pila<int> &entrada, Lista<int> &s
     
     while( resultado && (! secuenciaSalida.esVacia() || ! hangar.esVacia()) ) {
         
-        if ( ! entrada.esVacia()) {
-            hangar.apila( entrada.cima() );
-            entrada.desapila();
-        }
-        
         /*
         cout << "Hangar" << endl;
         printPila(hangar);
@@ -111,12 +106,16 @@ void hangarDeVagones(const int &numeroVagones, Pila<int> &entrada, Lista<int> &s
         
         // Si el elemento de la cima es igual que el primer elemento
         // de la secuencia resultante lo sacamos de la pila.
-        while ( ! secuenciaSalida.esVacia() && ! hangar.esVacia() && hangar.cima() == secuenciaSalida.primero() ) {
+        if (hangar.esVacia() || (! entrada.esVacia() && hangar.cima() < secuenciaSalida.primero()) ) {
+            hangar.apila( entrada.cima() );
+            entrada.desapila();
+        }
+        else if  (hangar.cima() == secuenciaSalida.primero() ) {
             
             hangar.desapila();
             secuenciaSalida.resto();
         }
-        if ( ! secuenciaSalida.esVacia() && ! hangar.esVacia() && hangar.cima() > secuenciaSalida.primero()) {
+        else if (hangar.cima() > secuenciaSalida.primero()) {
             resultado = false;
         }
     }
